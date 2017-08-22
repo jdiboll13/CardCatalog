@@ -36,6 +36,34 @@ namespace CardCatalog
                 Console.WriteLine("That title is available for you to check out.");
             }
         }
+        public void checkOut(string title)
+        {
+            var searched = Catalog.FirstOrDefault(w => w.Title == title);
+
+            if (searched?.IsCheckedOut == true)
+            {
+                Console.WriteLine("You can't check that out.");
+            }
+            else
+            {
+                Console.WriteLine($"{title} is being checked out.");
+                searched.IsCheckedOut = true;
+            }
+        }
+
+        public void checkIn(string title)
+        {
+            var searched = Catalog.FirstOrDefault(w => w.Title == title);
+            if (searched?.IsCheckedOut == false)
+            {
+                Console.WriteLine("That book is already checked in.");
+            }
+            else
+            {
+                Console.WriteLine($"{title} is being checked in.");
+                searched.IsCheckedOut = false;
+            }
+        }
 
     }
 }

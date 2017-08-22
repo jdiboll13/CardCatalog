@@ -49,15 +49,17 @@ namespace CardCatalog
                 Console.WriteLine($"{item.Title} was written by {item.Author}.");
             }
 
-            lib.checkedOut("Go the Fuck to Sleep" , "John Smith");
+            lib.checkIn("Go The F*ck To Sleep");
             Console.WriteLine($"Is {book3.Title} checked out? {book3.IsCheckedOut}.");
+
+            lib.checkOut("The Cat In The Hat");
+            Console.WriteLine($"Is {book1.Title} checked out? {book1.IsCheckedOut}.");
 
             var overdue = lib.searchOverdue();
             foreach (var item in overdue)
             {
                 Console.WriteLine($"{item.Title} is currently overdue.");
             }
-
         }
 
     }
