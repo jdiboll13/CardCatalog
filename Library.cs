@@ -11,23 +11,23 @@ namespace CardCatalog
         public List<Book> Catalog = new List<Book>();
         public IEnumerable<Book> searchForBookByName(string name)
         {
-            var searchedName = Catalog.Where(w => w.Title.ToLower().Contains(name.ToLower()));
-            return searchedName;
+            var search = Catalog.Where(w => w.Title.ToLower().Contains(name.ToLower()));
+            return search;
         }
         public IEnumerable<Book> searchForBookByAuthor(string name)
         {
-            var searchedAuthor = Catalog.Where(w => w.Author.ToLower().Contains(name.ToLower()));
-            return searchedAuthor;
+            var search = Catalog.Where(w => w.Author.ToLower().Contains(name.ToLower()));
+            return search;
         }
         public IEnumerable<Book> searchOverdue()
         {
-            var searchOverdue = Catalog.Where(w => w.OverdueDate <= DateTime.Now);
-            return searchOverdue;
+            var search = Catalog.Where(w => w.OverdueDate <= DateTime.Now);
+            return search;
         }
         public void checkedOut(string title, string membername)
         {
-            var searchedCheckedOut = Catalog.FirstOrDefault(w => w.Title == title);
-            if (searchedCheckedOut.IsCheckedOut == true)
+            var search = Catalog.FirstOrDefault(w => w.Title == title);
+            if (search?.IsCheckedOut == true)
             {
                 Console.WriteLine("I'm sorry. That book is currently checked out.");
             }
